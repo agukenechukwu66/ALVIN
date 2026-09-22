@@ -865,70 +865,8 @@
           </h2>
 
 
-          <div class="signal">
-
-            <div class="signal-head">
-
-              <strong>
-                XAU/USD
-              </strong>
-
-              <span class="buy">
-                BUY
-              </span>
-
-            </div>
-
-
-            <div class="signal-info">
-
-              Signal information will appear here.
-
-            </div>
-
-
-            <button
-              class="copy-signal"
-              onclick="copySignal('XAU/USD BUY')">
-
-              COPY SIGNAL
-
-            </button>
-
-          </div>
-
-
-
-          <div class="signal">
-
-            <div class="signal-head">
-
-              <strong>
-                XAU/USD
-              </strong>
-
-              <span class="sell">
-                SELL
-              </span>
-
-            </div>
-
-
-            <div class="signal-info">
-
-              Signal information will appear here.
-
-            </div>
-
-
-            <button
-              class="copy-signal"
-              onclick="copySignal('XAU/USD SELL')">
-
-              COPY SIGNAL
-
-            </button>
-
+          <div id="signalsContainer">
+            <div class="signal">Loading signals...</div>
           </div>
 
         </section>
@@ -1511,6 +1449,90 @@ function copyAddress() {
 
 
 /* =====================================================
+   LIVE SIGNALS FROM SUPABASE
+===================================================== */
+
+async function loadSignals() {
+
+  const container =
+    document.getElementById("signalsContainer");
+
+  if (!container) return;
+
+  const { data, error } = await supabaseClient
+    .from("signals")
+    .select("*")
+    .eq("status", "ACTIVE")
+    .order("created_at", { ascending: false });
+
+  if (error) {
+    console.error("Signals error:", error);
+    container.innerHTML =
+      '<div class="signal">Unable to load signals.</div>';
+    return;
+  }
+
+  if (!data || data.length === 0) {
+    container.innerHTML =
+      '<div class="signal">No active signals at the moment.</div>';
+    return;
+  }
+
+  container.innerHTML = "";
+
+  data.forEach(function(signal) {
+
+    const direction =
+      String(signal.direction || "").toUpperCase();
+
+    const directionClass =
+      direction === "SELL" ? "sell" : "buy";
+
+    const signalText =
+      `${signal.symbol || "XAU/USD"} ${direction} | Entry: ${signal.entry || "—"} | SL: ${signal.stop_loss || "—"} | TP1: ${signal.take_profit_1 || "—"} | TP2: ${signal.take_profit_2 || "—"} | TP3: ${signal.take_profit_3 || "—"}`;
+
+    const card = document.createElement("div");
+    card.className = "signal";
+
+    card.innerHTML = `
+      <div class="signal-head">
+        <strong>${escapeSignalText(signal.symbol || "XAU/USD")}</strong>
+        <span class="${directionClass}">
+          ${escapeSignalText(direction)}
+        </span>
+      </div>
+
+      <div class="signal-info">
+        Entry: ${escapeSignalText(signal.entry || "—")}<br>
+        Stop Loss: ${escapeSignalText(signal.stop_loss || "—")}<br>
+        TP1: ${escapeSignalText(signal.take_profit_1 || "—")}<br>
+        TP2: ${escapeSignalText(signal.take_profit_2 || "—")}<br>
+        TP3: ${escapeSignalText(signal.take_profit_3 || "—")}
+        ${signal.note ? `<br>Note: ${escapeSignalText(signal.note)}` : ""}
+      </div>
+
+      <button class="copy-signal">COPY SIGNAL</button>
+    `;
+
+    card.querySelector(".copy-signal").addEventListener("click", function() {
+      copySignal(signalText);
+    });
+
+    container.appendChild(card);
+  });
+}
+
+function escapeSignalText(value) {
+  return String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+
+/* =====================================================
    COPY SIGNAL
 ===================================================== */
 
@@ -1687,6 +1709,7 @@ async function loadBalance() {
 
 checkSession().then(() => {
   loadBalance();
+  loadSignals();
 });
 
 
