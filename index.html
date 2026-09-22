@@ -1665,7 +1665,29 @@ document
    START APPLICATION
 ===================================================== */
 
-checkSession();
+async function loadBalance() {
+  const { data, error } = await supabaseClient
+    .from("my_verified_balance")
+    .select("balance")
+    .single();
+
+  if (error) {
+    console.error("Balance error:", error);
+    return;
+  }
+
+  const balanceElement =
+    document.getElementById("availableBalance");
+
+  if (balanceElement) {
+    balanceElement.textContent =
+      "$" + Number(data.balance || 0).toFixed(2);
+  }
+}
+
+checkSession().then(() => {
+  loadBalance();
+});
 
 
 </script>
