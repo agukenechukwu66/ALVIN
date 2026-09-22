@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>FX Trading Portal</title>
 
   <style>
@@ -16,7 +17,7 @@
       font-family: Arial, Helvetica, sans-serif;
       background: #080b10;
       color: #fff;
-      min-height: 100vh;
+      line-height: 1.6;
     }
 
     button,
@@ -24,11 +25,17 @@
       font: inherit;
     }
 
+    button {
+      cursor: pointer;
+    }
+
     .hidden {
       display: none !important;
     }
 
-    /* AUTH */
+    /* =========================
+       AUTH PAGE
+    ========================= */
 
     .auth-page {
       min-height: 100vh;
@@ -36,24 +43,44 @@
       justify-content: center;
       align-items: center;
       padding: 25px;
+
       background:
-        radial-gradient(circle at top, #202833, #080b10 65%);
+        linear-gradient(
+          rgba(0,0,0,.65),
+          rgba(0,0,0,.85)
+        ),
+        radial-gradient(
+          circle at center,
+          #333,
+          #050505 70%
+        );
     }
 
     .auth-box {
       width: 100%;
-      max-width: 430px;
+      max-width: 440px;
+
       background: #11151c;
-      border: 1px solid #2a313c;
+
+      border: 1px solid #2c323c;
+
       border-radius: 14px;
-      padding: 30px;
-      box-shadow: 0 20px 60px rgba(0,0,0,.4);
+
+      padding: 32px;
+
+      box-shadow:
+        0 25px 70px rgba(0,0,0,.55);
     }
 
     .brand {
       text-align: center;
-      font-size: 27px;
+
+      font-size: 28px;
+
       font-weight: 800;
+
+      letter-spacing: 1px;
+
       margin-bottom: 8px;
     }
 
@@ -63,49 +90,71 @@
 
     .subtitle {
       text-align: center;
-      color: #8f98a8;
-      margin-bottom: 25px;
+
+      color: #8e97a5;
+
       font-size: 14px;
+
+      margin-bottom: 25px;
     }
 
     .tabs {
       display: grid;
+
       grid-template-columns: 1fr 1fr;
+
       gap: 8px;
-      margin-bottom: 20px;
+
+      margin-bottom: 22px;
     }
 
     .tab {
-      border: 1px solid #303744;
-      background: #090c11;
-      color: #aaa;
-      padding: 11px;
+      padding: 12px;
+
+      border: 1px solid #343a45;
+
       border-radius: 6px;
-      cursor: pointer;
+
+      background: #090c11;
+
+      color: #aaa;
     }
 
     .tab.active {
       background: #d4af37;
+
       color: #000;
+
       border-color: #d4af37;
+
       font-weight: bold;
     }
 
     label {
       display: block;
-      color: #aeb6c3;
+
+      color: #adb5c1;
+
       font-size: 13px;
+
       margin-bottom: 7px;
     }
 
     input {
       width: 100%;
+
+      padding: 14px;
+
+      margin-bottom: 16px;
+
       background: #090c11;
-      color: #fff;
-      border: 1px solid #343b47;
+
+      border: 1px solid #353c48;
+
       border-radius: 6px;
-      padding: 13px;
-      margin-bottom: 15px;
+
+      color: #fff;
+
       outline: none;
     }
 
@@ -115,50 +164,79 @@
 
     .main-btn {
       width: 100%;
-      padding: 13px;
-      border: 0;
-      border-radius: 6px;
+
+      padding: 14px;
+
       background: #d4af37;
+
       color: #000;
+
+      border: 0;
+
+      border-radius: 6px;
+
       font-weight: bold;
-      cursor: pointer;
+    }
+
+    .main-btn:hover {
+      opacity: .88;
     }
 
     .main-btn:disabled {
       opacity: .5;
+
       cursor: not-allowed;
     }
 
     .message {
       min-height: 22px;
-      margin-top: 13px;
-      font-size: 13px;
+
+      margin-top: 12px;
+
       text-align: center;
+
       color: #d4af37;
+
+      font-size: 13px;
     }
 
-    /* DASHBOARD */
+
+    /* =========================
+       DASHBOARD
+    ========================= */
 
     .dashboard {
       min-height: 100vh;
     }
 
     .topbar {
-      height: 70px;
+      min-height: 70px;
+
       background: #11151c;
-      border-bottom: 1px solid #252b35;
+
+      border-bottom: 1px solid #292f39;
+
       display: flex;
+
       align-items: center;
+
       justify-content: space-between;
-      padding: 0 6%;
+
+      padding: 0 7%;
+
       position: sticky;
+
       top: 0;
-      z-index: 10;
+
+      z-index: 100;
     }
 
     .logo {
       font-size: 22px;
+
       font-weight: 800;
+
+      letter-spacing: 1px;
     }
 
     .logo span {
@@ -167,31 +245,46 @@
 
     .top-actions {
       display: flex;
-      gap: 10px;
+
       align-items: center;
+
+      gap: 10px;
     }
 
     .support {
+      text-decoration: none;
+
       background: #229ed9;
+
+      color: #fff;
+
       padding: 9px 14px;
+
       border-radius: 6px;
+
       font-size: 13px;
+
       font-weight: bold;
     }
 
     .logout {
-      background: #252b35;
+      background: #292f39;
+
       color: #fff;
+
       border: 0;
+
       padding: 9px 14px;
+
       border-radius: 6px;
-      cursor: pointer;
     }
 
     .container {
-      width: 90%;
+      width: 86%;
+
       max-width: 1250px;
-      margin: 30px auto;
+
+      margin: 35px auto;
     }
 
     .welcome {
@@ -199,157 +292,232 @@
     }
 
     .welcome h1 {
-      font-size: 30px;
+      font-size: 32px;
+
       margin-bottom: 5px;
     }
 
     .welcome p {
-      color: #8f98a8;
+      color: #8993a2;
     }
 
     .cards {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 20px;
+
       margin-bottom: 25px;
     }
 
-    .card,
-    .panel {
-      background: #11151c;
-      border: 1px solid #252b35;
-      border-radius: 10px;
-    }
-
     .card {
-      padding: 22px;
+      background: #11151c;
+
+      border: 1px solid #292f39;
+
+      border-radius: 10px;
+
+      padding: 23px;
     }
 
     .card-label {
-      color: #8f98a8;
+      color: #8993a2;
+
       font-size: 13px;
+
       margin-bottom: 8px;
     }
 
     .card-value {
-      font-size: 27px;
+      font-size: 28px;
+
       font-weight: bold;
     }
 
     .layout {
       display: grid;
-      grid-template-columns: 2fr 1fr;
+
+      grid-template-columns:
+        2fr 1fr;
+
       gap: 20px;
     }
 
     .panel {
+      background: #11151c;
+
+      border: 1px solid #292f39;
+
+      border-radius: 10px;
+
       padding: 22px;
+
       margin-bottom: 20px;
     }
 
     .panel h2 {
       font-size: 20px;
+
       margin-bottom: 18px;
     }
 
+    /* =========================
+       MARKET
+    ========================= */
+
     .market {
-      height: 420px;
+      width: 100%;
+
+      height: 430px;
+
       background: #090c11;
+
       border-radius: 8px;
+
       overflow: hidden;
     }
 
     .market iframe {
       width: 100%;
+
       height: 100%;
+
       border: 0;
     }
 
-    .minimum {
-      color: #d4af37;
-      font-weight: bold;
-      margin-bottom: 15px;
-    }
-
-    .address {
-      background: #090c11;
-      border: 1px solid #343b47;
-      padding: 14px;
-      border-radius: 6px;
-      color: #d4af37;
-      word-break: break-all;
-      font-size: 13px;
-      margin-bottom: 10px;
-    }
-
-    .secondary-btn {
-      width: 100%;
-      padding: 12px;
-      border: 0;
-      border-radius: 6px;
-      background: #252b35;
-      color: white;
-      cursor: pointer;
-      margin-bottom: 18px;
-    }
-
-    .submit-btn {
-      width: 100%;
-      padding: 13px;
-      border: 0;
-      border-radius: 6px;
-      background: #d4af37;
-      color: #000;
-      font-weight: bold;
-      cursor: pointer;
-    }
+    /* =========================
+       SIGNALS
+    ========================= */
 
     .signal {
       background: #090c11;
-      border: 1px solid #252b35;
-      padding: 15px;
+
+      border: 1px solid #292f39;
+
       border-radius: 8px;
+
+      padding: 16px;
+
       margin-bottom: 12px;
     }
 
     .signal-head {
       display: flex;
+
       justify-content: space-between;
+
       margin-bottom: 8px;
     }
 
     .buy {
       color: #20c997;
+
       font-weight: bold;
     }
 
     .sell {
       color: #ff6464;
+
       font-weight: bold;
     }
 
     .signal-info {
-      color: #9da6b5;
+      color: #949dac;
+
       font-size: 13px;
     }
 
     .copy-signal {
       width: 100%;
-      margin-top: 10px;
-      padding: 9px;
-      background: #252b35;
-      color: white;
+
+      margin-top: 12px;
+
+      padding: 10px;
+
+      background: #292f39;
+
+      color: #fff;
+
       border: 0;
+
       border-radius: 5px;
-      cursor: pointer;
+    }
+
+    /* =========================
+       DEPOSIT
+    ========================= */
+
+    .minimum {
+      color: #d4af37;
+
+      font-weight: bold;
+
+      margin-bottom: 15px;
+    }
+
+    .address {
+      background: #090c11;
+
+      border: 1px solid #3a414c;
+
+      padding: 14px;
+
+      border-radius: 6px;
+
+      color: #d4af37;
+
+      font-size: 13px;
+
+      word-break: break-all;
+
+      margin-bottom: 10px;
+    }
+
+    .secondary-btn {
+      width: 100%;
+
+      padding: 12px;
+
+      background: #292f39;
+
+      color: #fff;
+
+      border: 0;
+
+      border-radius: 6px;
+
+      margin-bottom: 18px;
+    }
+
+    .submit-btn {
+      width: 100%;
+
+      padding: 13px;
+
+      background: #d4af37;
+
+      color: #000;
+
+      border: 0;
+
+      border-radius: 6px;
+
+      font-weight: bold;
     }
 
     .notice {
-      color: #7f8998;
+      color: #788392;
+
       font-size: 12px;
+
       line-height: 1.6;
-      margin-top: 12px;
     }
+
+    /* =========================
+       SUPPORT
+    ========================= */
 
     .support-box {
       text-align: center;
@@ -357,22 +525,38 @@
 
     .telegram {
       display: inline-block;
+
       background: #229ed9;
-      padding: 11px 17px;
+
+      color: #fff;
+
+      text-decoration: none;
+
+      padding: 11px 18px;
+
       border-radius: 6px;
+
       font-weight: bold;
     }
 
     footer {
-      border-top: 1px solid #252b35;
-      padding: 30px;
+      border-top: 1px solid #292f39;
+
+      color: #687281;
+
       text-align: center;
-      color: #687180;
+
       font-size: 12px;
+
+      padding: 30px;
     }
 
     @media (max-width: 850px) {
-      .cards,
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
       .layout {
         grid-template-columns: 1fr;
       }
@@ -388,834 +572,1103 @@
   </style>
 </head>
 
+
 <body>
 
-  <!-- ================= AUTH ================= -->
 
-  <section id="authPage" class="auth-page">
+<!-- =====================================================
+     AUTHENTICATION
+===================================================== -->
 
-    <div class="auth-box">
+<section id="authPage" class="auth-page">
 
-      <div class="brand">
-        <span>FX</span> TRADING
-      </div>
+  <div class="auth-box">
 
-      <div class="subtitle">
-        Secure customer portal
-      </div>
+    <div class="brand">
+      <span>FX</span> TRADING
+    </div>
 
-      <div class="tabs">
-
-        <button
-          id="loginTab"
-          class="tab active"
-          onclick="showLogin()">
-          Login
-        </button>
-
-        <button
-          id="signupTab"
-          class="tab"
-          onclick="showSignup()">
-          Create Account
-        </button>
-
-      </div>
+    <div class="subtitle">
+      Secure Customer Portal
+    </div>
 
 
-      <!-- LOGIN -->
+    <div class="tabs">
 
-      <form id="loginForm">
+      <button
+        id="loginTab"
+        class="tab active"
+        onclick="showLogin()">
 
-        <label>Email</label>
+        Login
 
-        <input
-          id="loginEmail"
-          type="email"
-          placeholder="you@example.com"
-          required
-        >
-
-        <label>Password</label>
-
-        <input
-          id="loginPassword"
-          type="password"
-          placeholder="Password"
-          required
-        >
-
-        <button
-          class="main-btn"
-          id="loginButton"
-          type="submit">
-          LOGIN
-        </button>
-
-        <div
-          class="message"
-          id="loginMessage">
-        </div>
-
-      </form>
+      </button>
 
 
-      <!-- SIGNUP -->
+      <button
+        id="signupTab"
+        class="tab"
+        onclick="showSignup()">
 
-      <form id="signupForm" class="hidden">
+        Create Account
 
-        <label>Full Name</label>
-
-        <input
-          id="signupName"
-          type="text"
-          maxlength="100"
-          placeholder="Full name"
-          required
-        >
-
-        <label>Email</label>
-
-        <input
-          id="signupEmail"
-          type="email"
-          placeholder="you@example.com"
-          required
-        >
-
-        <label>Password</label>
-
-        <input
-          id="signupPassword"
-          type="password"
-          minlength="8"
-          placeholder="Minimum 8 characters"
-          required
-        >
-
-        <button
-          class="main-btn"
-          id="signupButton"
-          type="submit">
-          CREATE ACCOUNT
-        </button>
-
-        <div
-          class="message"
-          id="signupMessage">
-        </div>
-
-      </form>
+      </button>
 
     </div>
 
-  </section>
+
+    <!-- LOGIN -->
+
+    <form id="loginForm">
+
+      <label>Email</label>
+
+      <input
+        id="loginEmail"
+        type="email"
+        placeholder="you@example.com"
+        required
+      >
 
 
-  <!-- ================= DASHBOARD ================= -->
+      <label>Password</label>
 
-  <section
-    id="dashboard"
-    class="dashboard hidden">
+      <input
+        id="loginPassword"
+        type="password"
+        placeholder="Password"
+        required
+      >
 
-    <header class="topbar">
 
-      <div class="logo">
-        <span>FX</span> TRADING
+      <button
+        id="loginButton"
+        class="main-btn"
+        type="submit">
+
+        LOGIN
+
+      </button>
+
+
+      <div
+        id="loginMessage"
+        class="message">
       </div>
 
-      <div class="top-actions">
+    </form>
 
-        <a
-          class="support"
-          href="https://t.me/HELP_DESK_SUPPORTTEAM"
-          target="_blank"
-          rel="noopener noreferrer">
-          Live Support
-        </a>
 
-        <button
-          class="logout"
-          onclick="logout()">
-          Logout
-        </button>
+    <!-- SIGN UP -->
+
+    <form
+      id="signupForm"
+      class="hidden">
+
+      <label>Full Name</label>
+
+      <input
+        id="signupName"
+        type="text"
+        placeholder="Full name"
+        required
+      >
+
+
+      <label>Email</label>
+
+      <input
+        id="signupEmail"
+        type="email"
+        placeholder="you@example.com"
+        required
+      >
+
+
+      <label>Password</label>
+
+      <input
+        id="signupPassword"
+        type="password"
+        minlength="8"
+        placeholder="Minimum 8 characters"
+        required
+      >
+
+
+      <button
+        id="signupButton"
+        class="main-btn"
+        type="submit">
+
+        CREATE ACCOUNT
+
+      </button>
+
+
+      <div
+        id="signupMessage"
+        class="message">
+      </div>
+
+    </form>
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CUSTOMER DASHBOARD
+===================================================== -->
+
+<section
+  id="dashboard"
+  class="dashboard hidden">
+
+
+  <header class="topbar">
+
+    <div class="logo">
+      <span>FX</span> TRADING
+    </div>
+
+
+    <div class="top-actions">
+
+      <a
+        class="support"
+        href="https://t.me/HELP_DESK_SUPPORTTEAM"
+        target="_blank"
+        rel="noopener noreferrer">
+
+        Live Support
+
+      </a>
+
+
+      <button
+        class="logout"
+        onclick="logout()">
+
+        Logout
+
+      </button>
+
+    </div>
+
+  </header>
+
+
+
+  <main class="container">
+
+
+    <div class="welcome">
+
+      <h1>
+        Welcome,
+        <span id="customerName">
+          Customer
+        </span>
+      </h1>
+
+      <p id="customerEmail"></p>
+
+    </div>
+
+
+
+    <!-- ACCOUNT CARDS -->
+
+    <div class="cards">
+
+
+      <div class="card">
+
+        <div class="card-label">
+          Available Balance
+        </div>
+
+        <div class="card-value">
+          $0.00
+        </div>
 
       </div>
 
-    </header>
 
+      <div class="card">
 
-    <main class="container">
-
-      <div class="welcome">
-
-        <h1>
-          Welcome, <span id="customerName">Customer</span>
-        </h1>
-
-        <p id="customerEmail"></p>
-
-      </div>
-
-
-      <div class="cards">
-
-        <div class="card">
-          <div class="card-label">
-            Available Balance
-          </div>
-
-          <div class="card-value">
-            $0.00
-          </div>
+        <div class="card-label">
+          Account Equity
         </div>
 
-
-        <div class="card">
-          <div class="card-label">
-            Account Equity
-          </div>
-
-          <div class="card-value">
-            $0.00
-          </div>
-        </div>
-
-
-        <div class="card">
-          <div class="card-label">
-            Open Positions
-          </div>
-
-          <div class="card-value">
-            0
-          </div>
+        <div class="card-value">
+          $0.00
         </div>
 
       </div>
 
 
-      <div class="layout">
+      <div class="card">
 
-        <div>
-
-          <!-- LIVE MARKET -->
-
-          <section class="panel">
-
-            <h2>
-              📈 Live Gold Market — XAU/USD
-            </h2>
-
-            <div class="market">
-
-              <iframe
-                src="https://www.tradingview.com/widgetembed/?frameElementId=tradingview_xauusd&symbol=OANDA%3AXAUUSD&interval=15&hidesidetoolbar=1&symboledit=1&saveimage=0&toolbarbg=f1f3f6&studies=%5B%5D&theme=dark&style=1&timezone=Etc%2FUTC&withdateranges=1&hideideas=1"
-                allowtransparency="true"
-                scrolling="no">
-              </iframe>
-
-            </div>
-
-          </section>
-
-
-          <!-- SIGNALS -->
-
-          <section class="panel">
-
-            <h2>📊 Trading Signals</h2>
-
-            <div class="signal">
-
-              <div class="signal-head">
-
-                <strong>XAU/USD</strong>
-
-                <span class="buy">
-                  BUY
-                </span>
-
-              </div>
-
-              <div class="signal-info">
-                Signal information will appear here.
-              </div>
-
-              <button
-                class="copy-signal"
-                onclick="copySignal('XAU/USD BUY')">
-                COPY SIGNAL
-              </button>
-
-            </div>
-
-
-            <div class="signal">
-
-              <div class="signal-head">
-
-                <strong>XAU/USD</strong>
-
-                <span class="sell">
-                  SELL
-                </span>
-
-              </div>
-
-              <div class="signal-info">
-                Signal information will appear here.
-              </div>
-
-              <button
-                class="copy-signal"
-                onclick="copySignal('XAU/USD SELL')">
-                COPY SIGNAL
-              </button>
-
-            </div>
-
-          </section>
-
+        <div class="card-label">
+          Open Positions
         </div>
 
+        <div class="card-value">
+          0
+        </div>
 
-        <div>
+      </div>
 
-          <!-- DEPOSIT -->
+    </div>
 
-          <section class="panel">
 
-            <h2>💰 Deposit Funds</h2>
 
-            <div class="minimum">
-              Minimum Deposit: $200 USDT
+    <div class="layout">
+
+
+      <div>
+
+
+        <!-- LIVE GOLD -->
+
+        <section class="panel">
+
+          <h2>
+            📈 Live Gold Market — XAU/USD
+          </h2>
+
+
+          <div class="market">
+
+            <iframe
+              src="https://www.tradingview.com/widgetembed/?frameElementId=tradingview_xauusd&symbol=OANDA%3AXAUUSD&interval=15&hidesidetoolbar=1&symboledit=1&saveimage=0&toolbarbg=f1f3f6&studies=%5B%5D&theme=dark&style=1&timezone=Etc%2FUTC&withdateranges=1&hideideas=1"
+              allowtransparency="true"
+              scrolling="no">
+            </iframe>
+
+          </div>
+
+        </section>
+
+
+
+        <!-- SIGNALS -->
+
+        <section class="panel">
+
+          <h2>
+            📊 Trading Signals
+          </h2>
+
+
+          <div class="signal">
+
+            <div class="signal-head">
+
+              <strong>
+                XAU/USD
+              </strong>
+
+              <span class="buy">
+                BUY
+              </span>
+
             </div>
 
-            <p class="notice">
-              USDT deposits use the TRON (TRC20) network.
-              Verify the network before sending.
-            </p>
 
-            <br>
+            <div class="signal-info">
 
-            <label>
-              USDT (TRC20) Deposit Address
-            </label>
+              Signal information will appear here.
 
-            <div
-              class="address"
-              id="depositAddress">
-              TGVubuR4VPTsNrimF5xnx1826hyoKKApvu
             </div>
+
 
             <button
-              class="secondary-btn"
-              onclick="copyAddress()">
-              COPY ADDRESS
+              class="copy-signal"
+              onclick="copySignal('XAU/USD BUY')">
+
+              COPY SIGNAL
+
+            </button>
+
+          </div>
+
+
+
+          <div class="signal">
+
+            <div class="signal-head">
+
+              <strong>
+                XAU/USD
+              </strong>
+
+              <span class="sell">
+                SELL
+              </span>
+
+            </div>
+
+
+            <div class="signal-info">
+
+              Signal information will appear here.
+
+            </div>
+
+
+            <button
+              class="copy-signal"
+              onclick="copySignal('XAU/USD SELL')">
+
+              COPY SIGNAL
+
+            </button>
+
+          </div>
+
+        </section>
+
+      </div>
+
+
+
+      <div>
+
+
+        <!-- DEPOSIT -->
+
+        <section class="panel">
+
+          <h2>
+            💰 Deposit Funds
+          </h2>
+
+
+          <div class="minimum">
+            Minimum Deposit: $200 USDT
+          </div>
+
+
+          <p class="notice">
+
+            USDT deposits use the TRON (TRC20)
+            network. Verify the network before
+            sending funds.
+
+          </p>
+
+
+          <br>
+
+
+          <label>
+            USDT (TRC20) Deposit Address
+          </label>
+
+
+          <div
+            id="depositAddress"
+            class="address">
+
+            TGVubuR4VPTsNrimF5xnx1826hyoKKApvu
+
+          </div>
+
+
+          <button
+            class="secondary-btn"
+            onclick="copyAddress()">
+
+            COPY ADDRESS
+
+          </button>
+
+
+
+          <!-- DEPOSIT FORM -->
+
+          <form id="depositForm">
+
+
+            <label>
+              Amount Sent (USDT)
+            </label>
+
+
+            <input
+              id="amount"
+              type="number"
+              min="200"
+              step="0.01"
+              placeholder="Minimum 200 USDT"
+              required
+            >
+
+
+            <label>
+              Transaction Hash / TXID
+            </label>
+
+
+            <input
+              id="txid"
+              type="text"
+              placeholder="Enter blockchain TXID"
+              required
+            >
+
+
+            <button
+              class="submit-btn"
+              type="submit">
+
+              SUBMIT DEPOSIT
+
             </button>
 
 
-            <form id="depositForm">
+            <div
+              id="depositMessage"
+              class="message">
+            </div>
 
-              <label>
-                Amount Sent (USDT)
-              </label>
-
-              <input
-                id="amount"
-                type="number"
-                min="200"
-                step="0.01"
-                placeholder="Minimum 200 USDT"
-                required
-              >
+          </form>
 
 
-              <label>
-                Transaction Hash / TXID
-              </label>
+          <p class="notice">
 
-              <input
-                id="txid"
-                type="text"
-                placeholder="Enter TXID"
-                required
-              >
+            Deposits submitted through this form
+            remain pending until independently
+            verified. Submission does not itself
+            confirm receipt of funds.
 
-              <button
-                class="submit-btn"
-                type="submit">
-                SUBMIT DEPOSIT
-              </button>
+          </p>
 
-              <div
-                class="message"
-                id="depositMessage">
-              </div>
-
-            </form>
-
-            <p class="notice">
-              Submitted deposits remain pending until independently
-              verified. A submission does not itself confirm receipt
-              of funds.
-            </p>
-
-          </section>
+        </section>
 
 
-          <!-- SUPPORT -->
 
-          <section class="panel support-box">
+        <!-- SUPPORT -->
 
-            <h2>💬 Live Contact Support</h2>
+        <section class="panel support-box">
 
-            <p class="notice">
-              Need help with your account?
-            </p>
+          <h2>
+            💬 Live Contact Support
+          </h2>
 
-            <br>
 
-            <a
-              class="telegram"
-              href="https://t.me/HELP_DESK_SUPPORTTEAM"
-              target="_blank"
-              rel="noopener noreferrer">
-              Contact Support
-            </a>
+          <p class="notice">
+            Need help with your account?
+          </p>
 
-          </section>
 
-        </div>
+          <br>
+
+
+          <a
+            class="telegram"
+            href="https://t.me/HELP_DESK_SUPPORTTEAM"
+            target="_blank"
+            rel="noopener noreferrer">
+
+            Contact Support
+
+          </a>
+
+        </section>
 
       </div>
 
-    </main>
+    </div>
 
+  </main>
 
-    <footer>
-      Customer portal. Real-money trading and custody require
-      appropriate regulated financial infrastructure.
-    </footer>
 
-  </section>
 
+  <footer>
 
-  <!-- SUPABASE -->
+    Customer portal. Deposits remain pending
+    until independently verified.
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  </footer>
 
-  <script>
+</section>
 
-    /* ==============================
-       SUPABASE CONFIG
-       ============================== */
 
-    const SUPABASE_URL =
-      "https://ihgsvwxyitkjkxchzyoy.supabase.co";
 
-    const SUPABASE_PUBLISHABLE_KEY =
-      "sb_publishable_j6s_hMRwSM6kZI_mFjNV7g_SA-P1hAz";
+<!-- =====================================================
+     SUPABASE
+===================================================== -->
 
-    const supabaseClient =
-      window.supabase.createClient(
-        SUPABASE_URL,
-        SUPABASE_PUBLISHABLE_KEY
-      );
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 
-    /* ==============================
-       AUTH UI
-       ============================== */
+<script>
 
-    function showLogin() {
 
-      document
-        .getElementById("loginForm")
-        .classList.remove("hidden");
+/* =====================================================
+   SUPABASE CONFIGURATION
+===================================================== */
 
-      document
-        .getElementById("signupForm")
-        .classList.add("hidden");
+const SUPABASE_URL =
+  "https://ihgsvwxyitkjkxchzyoy.supabase.co";
 
-      document
-        .getElementById("loginTab")
-        .classList.add("active");
 
-      document
-        .getElementById("signupTab")
-        .classList.remove("active");
-    }
+/*
+   PASTE YOUR sb_publishable_ KEY BETWEEN THE QUOTES.
+   DO NOT USE YOUR sb_secret_ KEY.
+*/
 
+const SUPABASE_PUBLISHABLE_KEY =
+  "PASTE_YOUR_SB_PUBLISHABLE_KEY_HERE";
 
-    function showSignup() {
 
-      document
-        .getElementById("loginForm")
-        .classList.add("hidden");
+const supabaseClient =
+  window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+  );
 
-      document
-        .getElementById("signupForm")
-        .classList.remove("hidden");
 
-      document
-        .getElementById("loginTab")
-        .classList.remove("active");
 
-      document
-        .getElementById("signupTab")
-        .classList.add("active");
-    }
+/* =====================================================
+   AUTH TABS
+===================================================== */
 
+function showLogin() {
 
-    /* ==============================
-       SIGN UP
-       ============================== */
+  document
+    .getElementById("loginForm")
+    .classList.remove("hidden");
 
-    document
-      .getElementById("signupForm")
-      .addEventListener("submit", async function(event) {
 
-        event.preventDefault();
+  document
+    .getElementById("signupForm")
+    .classList.add("hidden");
 
-        const name =
-          document
-            .getElementById("signupName")
-            .value
-            .trim();
 
-        const email =
-          document
-            .getElementById("signupEmail")
-            .value
-            .trim();
+  document
+    .getElementById("loginTab")
+    .classList.add("active");
 
-        const password =
-          document
-            .getElementById("signupPassword")
-            .value;
 
-        const message =
-          document
-            .getElementById("signupMessage");
+  document
+    .getElementById("signupTab")
+    .classList.remove("active");
 
-        const button =
-          document
-            .getElementById("signupButton");
+}
 
 
-        button.disabled = true;
-        message.textContent = "Creating account...";
 
+function showSignup() {
 
-        try {
+  document
+    .getElementById("loginForm")
+    .classList.add("hidden");
 
-          const { data, error } =
-            await supabaseClient.auth.signUp({
 
-              email: email,
+  document
+    .getElementById("signupForm")
+    .classList.remove("hidden");
 
-              password: password,
 
-              options: {
-                data: {
-                  full_name: name
-                },
+  document
+    .getElementById("loginTab")
+    .classList.remove("active");
 
-                emailRedirectTo:
-                  "https://agukenechukwu66.github.io/ALVIN/"
-              }
 
-            });
+  document
+    .getElementById("signupTab")
+    .classList.add("active");
 
+}
 
-          if (error) {
-            throw error;
-          }
 
 
-          message.textContent =
-            "Account created. Check your email to verify your account.";
+/* =====================================================
+   SIGN UP
+===================================================== */
 
+document
+  .getElementById("signupForm")
+  .addEventListener(
+    "submit",
+    async function(event) {
 
-          document
-            .getElementById("signupForm")
-            .reset();
+      event.preventDefault();
 
 
-        } catch (error) {
+      const name =
+        document
+          .getElementById("signupName")
+          .value
+          .trim();
 
-          console.error(error);
 
-          message.textContent =
-            error.message ||
-            "Unable to create account.";
+      const email =
+        document
+          .getElementById("signupEmail")
+          .value
+          .trim();
 
-        } finally {
 
-          button.disabled = false;
+      const password =
+        document
+          .getElementById("signupPassword")
+          .value;
 
-        }
 
-      });
+      const message =
+        document
+          .getElementById("signupMessage");
 
 
-    /* ==============================
-       LOGIN
-       ============================== */
+      const button =
+        document
+          .getElementById("signupButton");
 
-    document
-      .getElementById("loginForm")
-      .addEventListener("submit", async function(event) {
 
-        event.preventDefault();
+      button.disabled = true;
 
-        const email =
-          document
-            .getElementById("loginEmail")
-            .value
-            .trim();
+      message.textContent =
+        "Creating account...";
 
-        const password =
-          document
-            .getElementById("loginPassword")
-            .value;
 
-        const message =
-          document
-            .getElementById("loginMessage");
+      try {
 
-        const button =
-          document
-            .getElementById("loginButton");
+        const {
+          data,
+          error
+        } =
+          await supabaseClient.auth.signUp({
 
+            email: email,
 
-        button.disabled = true;
-        message.textContent = "Signing in...";
+            password: password,
 
+            options: {
 
-        try {
+              data: {
+                full_name: name
+              },
 
-          const { data, error } =
-            await supabaseClient.auth.signInWithPassword({
+              emailRedirectTo:
+                "https://agukenechukwu66.github.io/ALVIN/"
 
-              email: email,
-              password: password
+            }
 
-            });
+          });
 
 
-          if (error) {
-            throw error;
-          }
-
-
-          message.textContent = "";
-
-          showDashboard(data.user);
-
-
-        } catch (error) {
-
-          console.error(error);
-
-          message.textContent =
-            error.message ||
-            "Login failed.";
-
-        } finally {
-
-          button.disabled = false;
-
-        }
-
-      });
-
-
-    /* ==============================
-       DASHBOARD
-       ============================== */
-
-    function showDashboard(user) {
-
-      document
-        .getElementById("authPage")
-        .classList.add("hidden");
-
-      document
-        .getElementById("dashboard")
-        .classList.remove("hidden");
-
-
-      const metadata =
-        user.user_metadata || {};
-
-      document
-        .getElementById("customerName")
-        .textContent =
-        metadata.full_name ||
-        "Customer";
-
-      document
-        .getElementById("customerEmail")
-        .textContent =
-        user.email || "";
-
-    }
-
-
-    /* ==============================
-       LOGOUT
-       ============================== */
-
-    async function logout() {
-
-      await supabaseClient.auth.signOut();
-
-      document
-        .getElementById("dashboard")
-        .classList.add("hidden");
-
-      document
-        .getElementById("authPage")
-        .classList.remove("hidden");
-
-    }
-
-
-    /* ==============================
-       CHECK EXISTING SESSION
-       ============================== */
-
-    async function checkSession() {
-
-      const { data } =
-        await supabaseClient.auth.getSession();
-
-      if (data.session) {
-
-        showDashboard(
-          data.session.user
-        );
-
-      }
-
-    }
-
-
-    /* ==============================
-       DEPOSIT ADDRESS
-       ============================== */
-
-    const depositAddress =
-      "TGVubuR4VPTsNrimF5xnx1826hyoKKApvu";
-
-
-    function copyAddress() {
-
-      navigator.clipboard
-        .writeText(depositAddress)
-        .then(function() {
-
-          alert(
-            "USDT TRC20 address copied."
-          );
-
-        })
-        .catch(function() {
-
-          alert(
-            "Please copy the address manually."
-          );
-
-        });
-
-    }
-
-
-    /* ==============================
-       SIGNAL COPY
-       ============================== */
-
-    function copySignal(signal) {
-
-      navigator.clipboard
-        .writeText(signal)
-        .then(function() {
-
-          alert(
-            "Signal copied: " + signal
-          );
-
-        });
-
-    }
-
-
-    /* ==============================
-       DEPOSIT SUBMISSION
-       ============================== */
-
-    document
-      .getElementById("depositForm")
-      .addEventListener("submit", function(event) {
-
-        event.preventDefault();
-
-        const amount =
-          parseFloat(
-            document
-              .getElementById("amount")
-              .value
-          );
-
-        const txid =
-          document
-            .getElementById("txid")
-            .value
-            .trim();
-
-        const message =
-          document
-            .getElementById("depositMessage");
-
-
-        if (amount < 200) {
-
-          message.textContent =
-            "Minimum deposit is 200 USDT.";
-
-          return;
-
-        }
-
-
-        if (!txid) {
-
-          message.textContent =
-            "Please enter your transaction TXID.";
-
-          return;
-
+        if (error) {
+          throw error;
         }
 
 
         message.textContent =
-          "Deposit submitted for verification.";
+          "Account created. Please check your email to verify your account.";
+
+
+        document
+          .getElementById("signupForm")
+          .reset();
+
+
+      } catch (error) {
+
+        console.error(error);
+
+        message.textContent =
+          error.message ||
+          "Unable to create account.";
+
+      } finally {
+
+        button.disabled = false;
+
+      }
+
+    }
+  );
+
+
+
+/* =====================================================
+   LOGIN
+===================================================== */
+
+document
+  .getElementById("loginForm")
+  .addEventListener(
+    "submit",
+    async function(event) {
+
+      event.preventDefault();
+
+
+      const email =
+        document
+          .getElementById("loginEmail")
+          .value
+          .trim();
+
+
+      const password =
+        document
+          .getElementById("loginPassword")
+          .value;
+
+
+      const message =
+        document
+          .getElementById("loginMessage");
+
+
+      const button =
+        document
+          .getElementById("loginButton");
+
+
+      button.disabled = true;
+
+      message.textContent =
+        "Signing in...";
+
+
+      try {
+
+        const {
+          data,
+          error
+        } =
+          await supabaseClient.auth.signInWithPassword({
+
+            email: email,
+
+            password: password
+
+          });
+
+
+        if (error) {
+          throw error;
+        }
+
+
+        message.textContent = "";
+
+        showDashboard(data.user);
+
+
+      } catch (error) {
+
+        console.error(error);
+
+        message.textContent =
+          error.message ||
+          "Login failed.";
+
+      } finally {
+
+        button.disabled = false;
+
+      }
+
+    }
+  );
+
+
+
+/* =====================================================
+   SHOW DASHBOARD
+===================================================== */
+
+function showDashboard(user) {
+
+  document
+    .getElementById("authPage")
+    .classList.add("hidden");
+
+
+  document
+    .getElementById("dashboard")
+    .classList.remove("hidden");
+
+
+  const metadata =
+    user.user_metadata || {};
+
+
+  document
+    .getElementById("customerName")
+    .textContent =
+    metadata.full_name ||
+    "Customer";
+
+
+  document
+    .getElementById("customerEmail")
+    .textContent =
+    user.email || "";
+
+}
+
+
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
+async function logout() {
+
+  await supabaseClient.auth.signOut();
+
+
+  document
+    .getElementById("dashboard")
+    .classList.add("hidden");
+
+
+  document
+    .getElementById("authPage")
+    .classList.remove("hidden");
+
+
+  showLogin();
+
+}
+
+
+
+/* =====================================================
+   CHECK EXISTING LOGIN
+===================================================== */
+
+async function checkSession() {
+
+  const {
+    data,
+    error
+  } =
+    await supabaseClient.auth.getSession();
+
+
+  if (error) {
+
+    console.error(error);
+
+    return;
+
+  }
+
+
+  if (data.session) {
+
+    showDashboard(
+      data.session.user
+    );
+
+  }
+
+}
+
+
+
+/* =====================================================
+   COPY DEPOSIT ADDRESS
+===================================================== */
+
+const depositAddress =
+  "TGVubuR4VPTsNrimF5xnx1826hyoKKApvu";
+
+
+function copyAddress() {
+
+  navigator.clipboard
+    .writeText(depositAddress)
+    .then(function() {
+
+      alert(
+        "USDT TRC20 address copied."
+      );
+
+    })
+    .catch(function() {
+
+      alert(
+        "Please copy the address manually."
+      );
+
+    });
+
+}
+
+
+
+/* =====================================================
+   COPY SIGNAL
+===================================================== */
+
+function copySignal(signal) {
+
+  navigator.clipboard
+    .writeText(signal)
+    .then(function() {
+
+      alert(
+        "Signal copied: " + signal
+      );
+
+    })
+    .catch(function() {
+
+      alert(
+        "Unable to copy signal."
+      );
+
+    });
+
+}
+
+
+
+/* =====================================================
+   DEPOSIT SUBMISSION
+===================================================== */
+
+document
+  .getElementById("depositForm")
+  .addEventListener(
+    "submit",
+    async function(event) {
+
+      event.preventDefault();
+
+
+      const amount =
+        parseFloat(
+          document
+            .getElementById("amount")
+            .value
+        );
+
+
+      const txid =
+        document
+          .getElementById("txid")
+          .value
+          .trim();
+
+
+      const message =
+        document
+          .getElementById("depositMessage");
+
+
+      if (amount < 200) {
+
+        message.textContent =
+          "Minimum deposit is 200 USDT.";
+
+        return;
+
+      }
+
+
+      if (!txid) {
+
+        message.textContent =
+          "Please enter your transaction TXID.";
+
+        return;
+
+      }
+
+
+      message.textContent =
+        "Submitting deposit...";
+
+
+      try {
+
+        const {
+          data: {
+            user
+          },
+          error: userError
+        } =
+          await supabaseClient.auth.getUser();
+
+
+        if (userError || !user) {
+
+          throw new Error(
+            "Please log in again before submitting a deposit."
+          );
+
+        }
+
+
+        const {
+          error
+        } =
+          await supabaseClient
+            .from("deposits")
+            .insert({
+
+              user_id: user.id,
+
+              amount: amount,
+
+              txid: txid,
+
+              status: "pending"
+
+            });
+
+
+        if (error) {
+          throw error;
+        }
+
+
+        message.textContent =
+          "Deposit submitted successfully. Status: Pending verification.";
+
 
         document
           .getElementById("depositForm")
           .reset();
 
-      });
+
+      } catch (error) {
+
+        console.error(error);
+
+        message.textContent =
+          error.message ||
+          "Unable to submit deposit.";
+
+      }
+
+    }
+  );
 
 
-    /* Start */
 
-    checkSession();
+/* =====================================================
+   START APPLICATION
+===================================================== */
 
-  </script>
+checkSession();
+
+
+</script>
 
 </body>
 </html>
